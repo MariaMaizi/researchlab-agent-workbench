@@ -1,0 +1,1360 @@
+{
+  "title": "[真实回放摘要] 案例测试：小团队内部知识问答工具选型",
+  "version": "v6-案例测试",
+  "inputs": {
+    "question": "比较Dify Cloud与n8n Cloud用于小团队内部知识问答原型的适合程度，仅研究4个维度：1.知识库与文档检索搭建路径；2.问答流程及模型接入；3.云端入门套餐的计费单位、价格、计费周期与主要限制；4.原型使用中的日志、调试与证据可追溯能力。优先官网和官方文档。区分官方事实与分析判断，按场景给有条件建议；未知写未知，不声称已经实测产品功能。",
+    "materials": "优先来源线索（仅为链接，不表示正文已读取）：https://dify.ai/pricing/dify-cloud ; https://docs.dify.ai/ ; https://n8n.io/pricing/ ; https://docs.n8n.io/advanced-ai/ ; https://docs.n8n.io/advanced-ai/rag-in-n8n/ 。以实际读取正文为准，页面打不开要记录失败。",
+    "use_case": "5人产品团队希望在两周内做内部知识问答原型：导入公开产品文档，让同事提问并核对引用。优先易搭建、可解释成本，不涉及敏感文件。",
+    "candidates": "A：Dify Cloud（当前公开版本）。\nB：n8n Cloud（当前公开版本）。",
+    "deployment": "云托管原型；仅使用公开文档。不评价企业私有化部署，不假设两者功能或计费单位相同。",
+    "must_haves": "每项关键事实有原文和来源。不能把应用数、消息额度和工作流执行次数直接等同。分别注明云平台费用与外部模型API成本；没有证据不计算总成本。仅比较Cloud，不能把自托管功能当作Cloud套餐包含。"
+  },
+  "outputs": {
+    "report": "公开脱敏回放摘要：保留真实指标与复核问题，省略网页正文、完整事实与原始草稿。不可据此复核完整原文。\n\n## 研究尚未通过复核\n\n当前状态：needs_review\n\n完整草稿保存在 draft_report，不作为已通过报告。查看 review_json、fact_audit 和证据后修正或补充资料。\n\n复核问题：\n[\n  {\n    \"type\": \"quote_entailment\",\n    \"claim\": \"Tracing部分展示执行顺序、各节点耗时及数据流向[F10, F11][S-587f4bfa6ffa]\",\n    \"reason\": \"F10的引文仅支持Application Run History中Tracing展示执行顺序、耗时和数据流向；F11的引文描述的是Node Run History中点击Last run查看最近一次执行的输入、输出和时间详情。草稿将两者合并表述为同一功能，且将F11归入Tracing部分的描述，存在引文与主张不完全对应的问题。应拆分为应用级Tracing和节点级Last run两个独立能力分别引用。\",\n    \"fact_id\": \"F10, F11\",\n    \"source_id\": \"S-587f4bfa6ffa\"\n  }\n]",
+    "draft_report": "公开脱敏回放摘要：保留真实指标与复核问题，省略网页正文、完整事实与原始草稿。不可据此复核完整原文。\n\n请查看docs/validation.md中的案例解释。",
+    "run_status": "needs_review",
+    "collection_stats": {
+      "source_count": 7,
+      "read_success_count": 7,
+      "query_count": 10,
+      "first_failed_count": 1,
+      "supplement_query_count": 2,
+      "supplement_failed_count": 0,
+      "supplement_rounds": 1,
+      "truncated_count": 3,
+      "analysis_source_count": 7,
+      "excluded_source_count": 2
+    },
+    "review_json": {
+      "verdict": "NEEDS_REVIEW",
+      "checks": {
+        "object_and_version": true,
+        "quote_entailment": false,
+        "billing_and_units": true,
+        "conditions_preserved": true,
+        "no_extra_claims": true,
+        "requirements_covered": true
+      },
+      "issues": [
+        {
+          "type": "quote_entailment",
+          "claim": "Tracing部分展示执行顺序、各节点耗时及数据流向[F10, F11][S-587f4bfa6ffa]",
+          "reason": "F10的引文仅支持Application Run History中Tracing展示执行顺序、耗时和数据流向；F11的引文描述的是Node Run History中点击Last run查看最近一次执行的输入、输出和时间详情。草稿将两者合并表述为同一功能，且将F11归入Tracing部分的描述，存在引文与主张不完全对应的问题。应拆分为应用级Tracing和节点级Last run两个独立能力分别引用。",
+          "fact_id": "F10, F11",
+          "source_id": "S-587f4bfa6ffa"
+        }
+      ],
+      "status": "needs_review",
+      "independent_verification": false,
+      "note": "同模型的独立调用复核，不是独立事实认证，也不保证无错误。"
+    },
+    "evidence_json": {
+      "sources": [
+        {
+          "source_id": "S-76ee56c35a54",
+          "title": "Knowledge Retrieval - Dify Docs",
+          "url": "https://docs.dify.ai/en/cloud/use-dify/nodes/knowledge-retrieval",
+          "observed_at_utc": "2026-11-01T11:05:36.396263+00:00",
+          "read_status": "success",
+          "content_truncated": true
+        },
+        {
+          "source_id": "S-2bbb1e4964bc",
+          "title": "Simple Chatbot - Dify Docs",
+          "url": "https://docs.dify.ai/en/learn/tutorials/simple-chatbot",
+          "observed_at_utc": "2026-11-01T11:05:41.768055+00:00",
+          "read_status": "success",
+          "content_truncated": false
+        },
+        {
+          "source_id": "S-587f4bfa6ffa",
+          "title": "Run History - Dify Docs",
+          "url": "https://docs.dify.ai/en/cloud/use-dify/debug/history-and-logs",
+          "observed_at_utc": "2026-11-01T11:05:54.591389+00:00",
+          "read_status": "success",
+          "content_truncated": true
+        },
+        {
+          "source_id": "S-0f731601540b",
+          "title": "Retrieve relevant context | Build | n8n Docs",
+          "url": "https://docs.n8n.io/build/integrate-ai/understand-ai-components/retrieve-relevant-context",
+          "observed_at_utc": "2026-11-01T11:06:29.205792+00:00",
+          "read_status": "success",
+          "content_truncated": false
+        },
+        {
+          "source_id": "S-f54a22a1b53f",
+          "title": "Integrate AI | Build | n8n Docs",
+          "url": "https://docs.n8n.io/build/integrate-ai",
+          "observed_at_utc": "2026-11-01T11:06:36.220170+00:00",
+          "read_status": "success",
+          "content_truncated": false
+        },
+        {
+          "source_id": "S-740f191308be",
+          "title": "Debug executions | Build | n8n Docs",
+          "url": "https://docs.n8n.io/build/understand-workflows/understand-executions/debug-executions",
+          "observed_at_utc": "2026-11-01T11:06:50.342222+00:00",
+          "read_status": "success",
+          "content_truncated": false
+        },
+        {
+          "source_id": "S-80b5cb7bed72",
+          "title": "Dify Cloud 定价 - 适合每个团队的方案",
+          "url": "https://dify.ai/zh/pricing/dify-cloud",
+          "observed_at_utc": "2026-11-01T11:07:45.042925+00:00",
+          "read_status": "success",
+          "content_truncated": true
+        }
+      ]
+    },
+    "_execution_status": "partial-succeeded",
+    "task_json": {
+      "question": "比较Dify Cloud与n8n Cloud用于小团队内部知识问答原型的适合程度，仅研究4个维度：1.知识库与文档检索搭建路径；2.问答流程及模型接入；3.云端入门套餐的计费单位、价格、计费周期与主要限制；4.原型使用中的日志、调试与证据可追溯能力。优先官网和官方文档。区分官方事实与分析判断，按场景给有条件建议；未知写未知，不声称已经实测产品功能。",
+      "materials": "优先来源线索（仅为链接，不表示正文已读取）：https://dify.ai/pricing/dify-cloud ; https://docs.dify.ai/ ; https://n8n.io/pricing/ ; https://docs.n8n.io/advanced-ai/ ; https://docs.n8n.io/advanced-ai/rag-in-n8n/ 。以实际读取正文为准，页面打不开要记录失败。",
+      "use_case": "5人产品团队希望在两周内做内部知识问答原型：导入公开产品文档，让同事提问并核对引用。优先易搭建、可解释成本，不涉及敏感文件。",
+      "candidates": "A：Dify Cloud（当前公开版本）。\nB：n8n Cloud（当前公开版本）。",
+      "deployment": "云托管原型；仅使用公开文档。不评价企业私有化部署，不假设两者功能或计费单位相同。",
+      "must_haves": "每项关键事实有原文和来源。不能把应用数、消息额度和工作流执行次数直接等同。分别注明云平台费用与外部模型API成本；没有证据不计算总成本。仅比较Cloud，不能把自托管功能当作Cloud套餐包含。"
+    },
+    "facts": {
+      "facts": []
+    }
+  },
+  "events": [
+    {
+      "at": "2026-11-01T11:05:22.902593+00:00",
+      "event": "node_started",
+      "title": "用户输入",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:22.910104+00:00",
+      "event": "node_finished",
+      "title": "用户输入",
+      "status": "succeeded",
+      "elapsed": 0.000115,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:22.937922+00:00",
+      "event": "node_started",
+      "title": "整理选型任务",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:23.070920+00:00",
+      "event": "node_finished",
+      "title": "整理选型任务",
+      "status": "succeeded",
+      "elapsed": 0.168314,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:23.098466+00:00",
+      "event": "node_started",
+      "title": "生成搜索词",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:30.079559+00:00",
+      "event": "node_finished",
+      "title": "生成搜索词",
+      "status": "succeeded",
+      "elapsed": 6.903833,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:30.091143+00:00",
+      "event": "node_started",
+      "title": "校验检索矩阵",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:30.106180+00:00",
+      "event": "node_finished",
+      "title": "校验检索矩阵",
+      "status": "succeeded",
+      "elapsed": 0.085292,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:30.264022+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:31.758973+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.465465,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:31.770276+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:31.793077+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.056838,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:31.802117+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:35.695484+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 3.925013,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:35.718026+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:35.754091+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.057938,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:35.769850+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:36.014214+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.232168,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:36.033867+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:36.084837+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.075477,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:36.230522+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:37.385459+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.114833,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:37.403206+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:37.516695+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.085405,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:37.587447+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:41.213316+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 3.659976,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:41.225115+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:41.237229+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.058701,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:41.245036+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:41.480567+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.214189,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:41.490215+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:41.498644+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.059802,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:42.621830+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:44.775186+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 2.140518,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:44.791357+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:44.820178+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.062127,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:44.865260+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:48.044275+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 3.174636,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:48.056764+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:48.187568+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "failed",
+      "elapsed": 0.149242,
+      "error": "采集或执行异常；公开摘要省略原始错误详情。"
+    },
+    {
+      "at": "2026-11-01T11:05:48.300835+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:49.744245+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.335835,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:49.755465+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:49.820586+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.079908,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:49.840337+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:53.932309+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 4.185252,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:53.980593+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:54.012475+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.055402,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:54.024284+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:54.411010+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.214086,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:54.450116+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:54.462925+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.07771,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:54.496814+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:56.270166+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.814436,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:56.347681+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:56.438151+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.158795,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:05:56.444171+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:28.476198+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 32.059316,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:28.508361+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:28.577339+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.114758,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:28.679608+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:28.981074+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.218426,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:28.990323+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:28.998016+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.070728,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:29.232074+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:30.281512+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.247788,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:30.311406+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:30.348809+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.06944,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:30.372401+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:34.955858+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 4.600915,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:34.998374+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:35.285028+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.311971,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:35.313833+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:35.550657+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.232075,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:35.563562+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:36.096145+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.395282,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:36.105935+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:37.676346+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.5179,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:37.728697+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:37.743286+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.141498,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:37.770025+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.420534+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 4.522583,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.428775+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.445121+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.081131,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.451769+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.583598+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.241176,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.638658+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.750145+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.134932,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:42.965533+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:44.032010+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.130987,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:44.061332+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:44.364822+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.111215,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:44.372117+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:49.671580+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 5.498664,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:49.685714+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:49.736787+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.090691,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:49.755448+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:49.946656+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.209082,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:49.972023+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:50.021921+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.061418,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:50.075196+00:00",
+      "event": "node_started",
+      "title": "汇总证据与采集统计",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:50.144872+00:00",
+      "event": "node_finished",
+      "title": "汇总证据与采集统计",
+      "status": "succeeded",
+      "elapsed": 0.068921,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:06:50.157412+00:00",
+      "event": "node_started",
+      "title": "首轮结构化事实",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:31.381210+00:00",
+      "event": "node_finished",
+      "title": "首轮结构化事实",
+      "status": "succeeded",
+      "elapsed": 41.224559,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:31.396669+00:00",
+      "event": "node_started",
+      "title": "首轮事实校验",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:31.741131+00:00",
+      "event": "node_finished",
+      "title": "首轮事实校验",
+      "status": "succeeded",
+      "elapsed": 0.340437,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:31.837508+00:00",
+      "event": "node_started",
+      "title": "首轮覆盖与缺口",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:31.865822+00:00",
+      "event": "node_finished",
+      "title": "首轮覆盖与缺口",
+      "status": "succeeded",
+      "elapsed": 0.1198,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:31.887846+00:00",
+      "event": "node_started",
+      "title": "生成一次补搜计划",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:35.181018+00:00",
+      "event": "node_finished",
+      "title": "生成一次补搜计划",
+      "status": "succeeded",
+      "elapsed": 3.322729,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:35.205808+00:00",
+      "event": "node_started",
+      "title": "校验补搜上限",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:35.311215+00:00",
+      "event": "node_finished",
+      "title": "校验补搜上限",
+      "status": "succeeded",
+      "elapsed": 0.132646,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:35.518723+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:37.594801+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 1.867414,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:37.606278+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:37.618081+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.152239,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:37.626582+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.165959+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 6.611184,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.199357+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.334635+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.171107,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.360344+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.579952+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.237675,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.596903+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.716997+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.141842,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:44.866271+00:00",
+      "event": "node_started",
+      "title": "Tavily Search",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:47.004942+00:00",
+      "event": "node_finished",
+      "title": "Tavily Search",
+      "status": "succeeded",
+      "elapsed": 2.134435,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:47.029162+00:00",
+      "event": "node_started",
+      "title": "整理候选来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:47.061043+00:00",
+      "event": "node_finished",
+      "title": "整理候选来源",
+      "status": "succeeded",
+      "elapsed": 0.056337,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:47.078610+00:00",
+      "event": "node_started",
+      "title": "筛选研究来源",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:52.750330+00:00",
+      "event": "node_finished",
+      "title": "筛选研究来源",
+      "status": "succeeded",
+      "elapsed": 5.662008,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:52.835293+00:00",
+      "event": "node_started",
+      "title": "校验并输出选中网址",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:52.964536+00:00",
+      "event": "node_finished",
+      "title": "校验并输出选中网址",
+      "status": "succeeded",
+      "elapsed": 0.103715,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:52.971259+00:00",
+      "event": "node_started",
+      "title": "Tavily Extract",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:53.065030+00:00",
+      "event": "node_finished",
+      "title": "Tavily Extract",
+      "status": "succeeded",
+      "elapsed": 0.211218,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:53.091249+00:00",
+      "event": "node_started",
+      "title": "整理本轮证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:53.135247+00:00",
+      "event": "node_finished",
+      "title": "整理本轮证据",
+      "status": "succeeded",
+      "elapsed": 0.081478,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:53.214296+00:00",
+      "event": "node_started",
+      "title": "合并补搜证据",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:53.260422+00:00",
+      "event": "node_finished",
+      "title": "合并补搜证据",
+      "status": "succeeded",
+      "elapsed": 0.063961,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:07:53.270251+00:00",
+      "event": "node_started",
+      "title": "信息提取",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:08:46.736470+00:00",
+      "event": "node_finished",
+      "title": "信息提取",
+      "status": "succeeded",
+      "elapsed": 53.444539,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:08:46.749522+00:00",
+      "event": "node_started",
+      "title": "校验事实与引文",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:08:46.773987+00:00",
+      "event": "node_finished",
+      "title": "校验事实与引文",
+      "status": "succeeded",
+      "elapsed": 0.079902,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:08:46.801855+00:00",
+      "event": "node_started",
+      "title": "最终事实覆盖矩阵",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:08:46.835980+00:00",
+      "event": "node_finished",
+      "title": "最终事实覆盖矩阵",
+      "status": "succeeded",
+      "elapsed": 0.057867,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:08:46.852476+00:00",
+      "event": "node_started",
+      "title": "对比报告",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:42.565517+00:00",
+      "event": "node_finished",
+      "title": "对比报告",
+      "status": "succeeded",
+      "elapsed": 55.722434,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:42.602820+00:00",
+      "event": "node_started",
+      "title": "复核任务与结论",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:57.392760+00:00",
+      "event": "node_finished",
+      "title": "复核任务与结论",
+      "status": "succeeded",
+      "elapsed": 14.747608,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:57.408240+00:00",
+      "event": "node_started",
+      "title": "输出验收状态",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:57.471676+00:00",
+      "event": "node_finished",
+      "title": "输出验收状态",
+      "status": "succeeded",
+      "elapsed": 0.150467,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:57.490026+00:00",
+      "event": "node_started",
+      "title": "检查最终引用编号",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:57.744383+00:00",
+      "event": "node_finished",
+      "title": "检查最终引用编号",
+      "status": "succeeded",
+      "elapsed": 0.120351,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:57.750160+00:00",
+      "event": "node_started",
+      "title": "输出",
+      "status": "running",
+      "elapsed": 0,
+      "error": ""
+    },
+    {
+      "at": "2026-11-01T11:09:57.757406+00:00",
+      "event": "node_finished",
+      "title": "输出",
+      "status": "succeeded",
+      "elapsed": 0.000123,
+      "error": ""
+    }
+  ],
+  "elapsed": 274.84932906599715,
+  "tokens": 101292
+}

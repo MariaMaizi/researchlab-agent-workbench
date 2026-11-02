@@ -1,0 +1,65 @@
+[
+  {
+    "case": 1,
+    "title": "案例测试：小团队内部知识问答工具选型",
+    "elapsed_seconds": 274.8,
+    "tokens": 101292,
+    "machine_status": "needs_review",
+    "collection_stats": {
+      "source_count": 7,
+      "read_success_count": 7,
+      "query_count": 10,
+      "first_failed_count": 1,
+      "supplement_query_count": 2,
+      "supplement_failed_count": 0,
+      "supplement_rounds": 1,
+      "truncated_count": 3,
+      "analysis_source_count": 7,
+      "excluded_source_count": 2
+    },
+    "semantic_review": "NEEDS_REVIEW",
+    "disclaimer": "公开脱敏回放摘要：保留真实指标与复核问题，省略网页正文、完整事实与原始草稿。不可据此复核完整原文。"
+  },
+  {
+    "case": 2,
+    "title": "案例测试：iPhone通勤降噪耳机选购",
+    "elapsed_seconds": 217.9,
+    "tokens": 109309,
+    "machine_status": "needs_review",
+    "collection_stats": {
+      "source_count": 6,
+      "read_success_count": 6,
+      "query_count": 10,
+      "first_failed_count": 1,
+      "supplement_query_count": 2,
+      "supplement_failed_count": 0,
+      "supplement_rounds": 1,
+      "truncated_count": 1,
+      "analysis_source_count": 6,
+      "excluded_source_count": 0
+    },
+    "semantic_review": "NEEDS_REVIEW",
+    "disclaimer": "公开脱敏回放摘要：保留真实指标与复核问题，省略网页正文、完整事实与原始草稿。不可据此复核完整原文。"
+  },
+  {
+    "case": 3,
+    "title": "Venchi 巧克力自用选购",
+    "elapsed_seconds": 155.1,
+    "tokens": 83715,
+    "machine_status": "model_review_passed",
+    "collection_stats": {
+      "source_count": 1,
+      "read_success_count": 1,
+      "query_count": 9,
+      "first_failed_count": 4,
+      "supplement_query_count": 4,
+      "supplement_failed_count": 3,
+      "supplement_rounds": 1,
+      "truncated_count": 1,
+      "analysis_source_count": 1,
+      "excluded_source_count": 1
+    },
+    "semantic_review": "PASS",
+    "disclaimer": "公开脱敏回放摘要：保留真实指标与复核问题，省略网页正文、完整事实与原始草稿。不可据此复核完整原文。"
+  }
+]
